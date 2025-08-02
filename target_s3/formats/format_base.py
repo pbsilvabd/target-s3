@@ -20,7 +20,6 @@ DATE_GRAIN = {
     "second": 2,
     "microsecond": 1,
 }
-COMPRESSION = {}
 
 
 def format_type_factory(object_type_class, *pargs, **kargs):
@@ -131,7 +130,7 @@ class FormatBase(metaclass=ABCMeta):
             grain = DATE_GRAIN[self.config["append_date_to_filename_grain"].lower()]
             file_name += f"{self.create_file_structure(batch_start, grain)}"
 
-        return f"{folder_path}{file_name}.{self.extension}.{self.compression}"
+        return f"{folder_path}{file_name}.{self.extension}"
 
     def create_folder_structure(
         self, batch_start: datetime, grain: int, partition_name_enabled: bool
